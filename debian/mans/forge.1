@@ -1,0 +1,47 @@
+.TH FORGE "1" "October 2013" "forge 2010-07-28" "User Commands"
+.SH NAME
+forge \- training program for SNAP
+.SH SYNOPSIS
+.B forge
+[\fIoptions\fR] <\fBann\fR> <\fBdna\fR> [\fIoptions\fR]
+.SH OPTIONS
+.HP
+\fB\-help\fR
+.HP
+\fB\-verbose\fR
+.TP
+\fB\-pseudocount\fR <float>
+[1]   (absolute number for all models)
+.HP
+\fB\-pseudoCoding\fR <float> [0.0] (eg. 0.05)
+.HP
+\fB\-pseudoIntron\fR <float> [0.0]
+.TP
+\fB\-pseudoInter\fR <float>
+[0.0]
+.TP
+\fB\-min\-counts\fR
+[0]
+.HP
+\fB\-lcmask\fR [\-fragmentN]
+.TP
+\fB\-utr5\-length\fR <int>
+[50]
+.TP
+\fB\-utr5\-offset\fR <int>
+[10]
+.TP
+\fB\-utr3\-length\fR <int>
+[50]
+.TP
+\fB\-utr3\-offset\fR <int>
+[10]
+.TP
+\fB\-explicit\fR <int>
+[250]
+.TP
+\fB\-min\-intron\fR <int>
+[30]
+.TP
+\fB\-boost\fR <file>
+(file of ID <int>)

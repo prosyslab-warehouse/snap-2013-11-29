@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	touch depend Zoe/depend
+	dh_auto_clean
+	if [ -f depend.orig ] ;     then mv depend.orig     depend;     fi
+	if [ -f Zoe/depend.orig ] ; then mv Zoe/depend.orig Zoe/depend; fi
+
+override_dh_auto_config:
+	cp -a depend     depend.orig
+	cp -a Zoe/depend Zoe/depend.orig
+	dh_auto_config
+
+override_dh_auto_build:
+	dh_auto_build CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)"
+
+override_dh_install:
+	dh_install
+	# cds-trainer.pl and noncoding-trainer.pl are needing the following Perl modules:
+	#   IK.pm, FAlite.pm, DataBrowser.pm
+	#   since these are not available in Debian there is no point in installing this script
+	find debian -name cds-trainer.pl -delete
+	find debian -name noncoding-trainer.pl -delete

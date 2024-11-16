@@ -1,0 +1,4 @@
+# This README file is related to the purpose of the directory it belongs to.
+package-contains-documentation-outside-usr-share-doc usr/share/snap/HMM/README
+# see https://lists.debian.org/debian-med/2018/06/msg00043.html
+script-with-language-extension usr/bin/*.*

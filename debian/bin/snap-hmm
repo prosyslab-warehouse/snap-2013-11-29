@@ -1,0 +1,2 @@
+#!/bin/sh
+ZOE=/usr/share/snap/Zoe /usr/lib/snap/snap $@

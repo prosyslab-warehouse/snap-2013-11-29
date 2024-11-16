@@ -1,0 +1,5 @@
+# For compatibility reasons enable Debian Med users to keep on calling snap if PATH properly set
+usr/bin/snap-hmm			usr/lib/debian-med/bin/snap
+# Also link the manpage to the Debian Med name space
+usr/share/man/man1/snap-hmm.1.gz	usr/lib/debian-med/share/man/man1/snap.1.gz
+

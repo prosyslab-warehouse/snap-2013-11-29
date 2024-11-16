@@ -1,0 +1,53 @@
+Author: Sascha Steinbiss <satta@tetrinetsucht.de>
+Last-Update: Sat, 30 Apr 2016 17:48:14 +0100
+Bug-Debian: https://bugs.debian.org/812011
+Forwarded: https://github.com/KorfLab/SNAP/issues/3
+Description: changing the (likely buggy) behaviour of the zoeHSPCmpQuery and
+ zoeHSPCmpSbjct functions to do the correct comparisons. This fixes:
+ error: self-comparison always evaluates to false [-Werror=tautological-compare]
+
+--- a/Zoe/zoeAlignment.c
++++ b/Zoe/zoeAlignment.c
+@@ -675,13 +675,13 @@
+ 
+ int zoeHSPCmpQuery (const zoeHSP h1, const zoeHSP h2) {
+ 	if      (h1->q_start < h2->q_start && h1->q_end < h2->q_end) return -1;
+-	else if (h1->q_start > h2->q_start && h2->q_end > h2->q_end) return  1;
++	else if (h1->q_start > h2->q_start && h1->q_end > h2->q_end) return  1;
+ 	else    return  0;
+ }
+ 
+ int zoeHSPCmpSbjct (const zoeHSP h1, const zoeHSP h2) {
+ 	if      (h1->s_start < h2->s_start && h1->s_end < h2->s_end) return -1;
+-	else if (h1->s_start > h2->s_start && h2->s_end > h2->s_end) return  1;
++	else if (h1->s_start > h2->s_start && h1->s_end > h2->s_end) return  1;
+ 	else    return  0;
+ }
+ 
+@@ -722,26 +722,6 @@
+ 	return group;
+ }
+ 
+-/*
+-
+-zoeVec zoeChainHSPs (const zoeVec HSPs) {
+-	int           i;
+-	zoeVec        bestHSPs = NULL;
+-	/* zoeVec        qvec; */
+-	/* zoeVec        svec; */
+-
+-	for (i = 0; i < HSPs->size; i++) {
+-		zoeWriteHSP(stdout, HSPs->elem[i]);
+-	}
+-	
+-	/* qvec = */ zoeGroupHSPs(HSPs, 'q');
+-	/* svec = */ zoeGroupHSPs(HSPs, 's');
+-	
+-	return bestHSPs;
+-}
+-
+-*/
+-
+ void zoeDeleteScoreSystem (zoeScoreSystem s) {
+ 	int i;
+ 	for (i = 0; i < 22; i++) zoeFree(s->score[i]);

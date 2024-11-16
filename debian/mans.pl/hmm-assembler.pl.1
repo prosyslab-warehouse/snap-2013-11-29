@@ -1,0 +1,77 @@
+.TH HMM-ASSEMBLER.PL "1" "November 2013" "hmm-assembler.pl 2010-07-28" "User Commands"
+.SH NAME
+hmm-assembler.pl \- SNAP module hmm-assembler.pl
+.SH SYNOPSIS
+.B hmm-assembler.pl
+[\fI-OPTIONS \fR[\fI-MORE_OPTIONS\fR]] [\fI--\fR] [\fIPROGRAM_ARG1 \fR...]
+.SH OPTIONS
+.SS "The following single-character options are accepted:"
+.PP
+With arguments: \fB\-i\fR \fB\-e\fR \fB\-A\fR \fB\-D\fR \fB\-M\fR \fB\-S\fR \fB\-C\fR \fB\-I\fR \fB\-N\fR \fB\-a\fR \fB\-3\fR \fB\-5\fR \fB\-Z\fR \fB\-c\fR
+.PP
+Boolean (without arguments): \fB\-r\fR \fB\-o\fR \fB\-x\fR \fB\-p\fR \fB\-t\fR \fB\-1\fR
+.PP
+Options may be merged together.  \fB\-\-\fR stops processing of options.
+Space is not required between options and their arguments.
+.PP
+Options:
+.TP
+\fB\-i\fR
+<length>       [500]
+.TP
+\fB\-e\fR
+<length>       [1000]
+.TP
+\fB\-A\fR
+<order:length> [0:30]
+.TP
+\fB\-D\fR
+<order:length> [0:9]
+.TP
+\fB\-M\fR
+<order:length> [0:15]
+.TP
+\fB\-S\fR
+<order:length> [0:9]
+.TP
+\fB\-C\fR
+<order>        [4]
+.TP
+\fB\-I\fR
+<order>        [4]
+.TP
+\fB\-N\fR
+<order>        [4]
+.TP
+\fB\-3\fR
+<order:length> []  include 3'UTR model, requires \fB\-a\fR
+.TP
+\fB\-a\fR
+<order:length> []  include PolyA model, requires \fB\-3\fR
+.TP
+\fB\-5\fR
+<order:length> []  include 5'UTR moel, requires \fB\-p\fR
+.TP
+\fB\-p\fR
+include generic promoter model, requires \fB\-5\fR
+.TP
+\fB\-r\fR
+include generic repeat model
+.TP
+\fB\-o\fR
+include reverse ORF model
+.TP
+\fB\-x\fR
+use explicit duration intron model
+.TP
+\fB\-t\fR
+include C.elegans trans\-splicing, requires \fB\-p\fR, \fB\-5\fR
+.TP
+\fB\-Z\fR
+<clade>            sets clade\-specific values (worm, fly, plant)
+.TP
+\fB\-1\fR
+single gene model
+.TP
+\fB\-c\fR <score>
+include GC\-AG splice donor model

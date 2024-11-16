@@ -1,0 +1,160 @@
+snap (2013-11-29-11) unstable; urgency=medium
+
+  * Fixing Lintian error due to malformed override
+  * Setting Standards version to 4.5.1 (no changes needed)
+  * Refreshing d/copyright
+
+ -- Pierre Gruet <pgtdebian@free.fr>  Tue, 22 Dec 2020 14:24:21 +0100
+
+snap (2013-11-29-10) unstable; urgency=medium
+
+  [ Dylan Aïssi ]
+  * d/control: Update homepage (Closes: #927011).
+
+  [ Pierre Gruet ]
+  * Avoiding multiple definitions error due to gcc-10 (Closes: #957820)
+  * Depending on debhelper-compat
+  * Bumping Standards version to 4.5.0 (Rules-Requires-Root field added)
+  * Adding salsa-ci.yml file
+  * Renaming d/NEWS.Debian to d/NEWS
+  * Changing deprecated ADTTMP variable name in debian/tests/run-unit-test
+  * Adding Bug- and Repository-related fields in d/upstream/metadata
+  * Adding and documenting Lintian overrides
+  * Trim trailing whitespace.
+  * Remove obsolete field Name from debian/upstream/metadata (already present in
+    machine-readable debian/copyright).
+
+  [ Andreas Tille ]
+  * Override script-with-language-extension
+
+ -- Pierre Gruet <pgtdebian@free.fr>  Thu, 06 Aug 2020 15:01:26 +0200
+
+snap (2013-11-29-9) unstable; urgency=medium
+
+  * Enlarge too short target string for sprintf
+    Closes: #897864
+  * debhelper 11
+  * Point Vcs fields to salsa.debian.org
+  * Standards-Version: 4.1.4
+  * Fix spelling
+
+ -- Andreas Tille <tille@debian.org>  Tue, 08 May 2018 07:30:35 +0200
+
+snap (2013-11-29-8) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * Fix FTCBFS: Extend use-CC.patch to cover all bare gcc invocations.
+    (Closes: #883891)
+
+  [ Andreas Tille ]
+  * Standards-Version: 4.1.2
+
+ -- Andreas Tille <tille@debian.org>  Sat, 09 Dec 2017 07:33:01 +0100
+
+snap (2013-11-29-7) unstable; urgency=medium
+
+  * Moved packaging from SVN to Git
+  * Standards-Version: 4.1.1
+  * d/rules: do not parse d/changelog
+
+ -- Andreas Tille <tille@debian.org>  Mon, 20 Nov 2017 13:24:52 +0100
+
+snap (2013-11-29-6) unstable; urgency=medium
+
+  * Rename package also in autopkgtest (Thanks for the patch to Jeremy Bicha
+    <jbicha@ubuntu.com>)
+    Closes: #851459
+  * Drop unused lintian overrides
+
+ -- Andreas Tille <tille@debian.org>  Sun, 15 Jan 2017 09:01:43 +0100
+
+snap (2013-11-29-5) unstable; urgency=medium
+
+  * debhelper 10
+  * d/watch: version=4
+  * Rename /usr/bin/snap to /usr/bin/snap-hmm
+    Closes: #849161, #849162
+  * README.Debian + NEWS.Debian to inform users about name change
+
+ -- Andreas Tille <tille@debian.org>  Fri, 23 Dec 2016 12:44:27 +0100
+
+snap (2013-11-29-4) unstable; urgency=medium
+
+  * itoa implementation had broken identation - use sprintf instead
+  * add missing braces
+    Closes: #835283
+
+ -- Andreas Tille <tille@debian.org>  Wed, 24 Aug 2016 12:29:39 +0200
+
+snap (2013-11-29-3) unstable; urgency=medium
+
+  * Team upload.
+  * add CPPFLAGS for full hardening.
+  * Fix building with GCC 6 by addressing a bug in zoeTools.c.
+    Closes: 831165.
+
+ -- Sascha Steinbiss <satta@debian.org>  Sun, 17 Jul 2016 17:43:09 +0000
+
+snap (2013-11-29-2) unstable; urgency=medium
+
+  [ Andreas Tille ]
+  * Fix homepage
+  * cme fix dpkg-control
+  * Priority: optional
+  * Better hardening
+  * Lintian override for false positive of timestamped gzip files
+
+  [ Sascha Steinbiss ]
+  * Fix building with GCC6.
+    Closes: #812011
+
+ -- Andreas Tille <tille@debian.org>  Tue, 03 May 2016 10:12:10 +0200
+
+snap (2013-11-29-1) unstable; urgency=medium
+
+  * New upstream version
+    Closes: #753849
+  * adapted watch file
+  * moved debian/upstream to debian/upstrem/metadata
+  * d/copyright: Exclude binary files without source (from OSX)
+  * cme fix dpkg-control
+  * add autopkgtest
+
+ -- Andreas Tille <tille@debian.org>  Tue, 07 Oct 2014 13:31:52 +0200
+
+snap (2010-07-28-2) unstable; urgency=low
+
+  * debian/upstream: Added citation information
+  * debian/copyright: DEP5 issues
+  * debian/README.Debian:
+     - Removed information which is not intended for users
+     - Added information about scripts which are not included into the
+       package since some requriements are not yet fullfilled
+  * debian/control:
+     - cme fix dpkg-control
+     - canonical Vcs fields
+  * debhelper 9 (control+compat)
+  * debian/patches/unused-but-set-variable.patch: Make sure package
+    builds with hardening flags
+  * debian/rules:
+     - deleted useless comment
+     - Work around self-made build system and save original files
+       before configuration and restore these in clean target
+  * debian/mans: create simple man pages by polishing help2man output
+  * debian/bin/snap: wrapper to set environment variable ZOE to implement
+    hint given in 00README installation instructions
+  * debian/patches/hardening.patch: Propagate hardening options
+
+ -- Andreas Tille <tille@debian.org>  Fri, 25 Oct 2013 16:39:26 +0200
+
+snap (2010-07-28-1~lucid1) lucid; urgency=low
+
+  * Building for Debian PPA
+
+ -- Steffen Moeller <moeller@debian.org>  Fri, 17 Jun 2011 00:52:13 +0200
+
+snap (2010-07-28-1) experimental; urgency=low
+
+  * Crude initial release, lacking man pages (Closes: #630753).
+
+ -- Steffen Moeller <moeller@debian.org>  Fri, 17 Jun 2011 00:52:12 +0200

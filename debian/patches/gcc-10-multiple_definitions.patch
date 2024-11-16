@@ -1,0 +1,21 @@
+Description: Avoiding multiple definitions error due to gcc-10
+Author: Pierre Gruet <pgtdebian@free.fr>
+Bug-Debian: https://bugs.debian.org/957820
+Forwarded: https://github.com/KorfLab/SNAP/issues/7
+Last-Update: 2020-08-06
+
+--- a/Zoe/zoeTools.h
++++ b/Zoe/zoeTools.h
+@@ -40,9 +40,9 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-const char * zoeFunction;
+-const char * zoeConstructor;
+-const char * zoeMethod;
++extern const char * zoeFunction;
++extern const char * zoeConstructor;
++extern const char * zoeMethod;
+ 
+ void   zoeLibInfo (void);
+ void   zoeSetProgramName (const char*);

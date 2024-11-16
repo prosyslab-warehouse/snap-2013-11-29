@@ -1,0 +1,29 @@
+Author: Andreas Tille <tille@debian.org>
+Date: Tue, 07 Oct 2014 13:31:52 +0200
+Forwarded: https://github.com/KorfLab/SNAP/issues/3
+Description: When enabling hardening flags by
+ using debhelper 9 unsused variables should not be assigned.
+ This patch comments those variables.
+
+--- a/Zoe/zoeAlignment.c
++++ b/Zoe/zoeAlignment.c
+@@ -727,15 +727,15 @@ zoeVec zoeGroupHSPs(zoeVec HSPs, char ty
+ zoeVec zoeChainHSPs (const zoeVec HSPs) {
+ 	int           i;
+ 	zoeVec        bestHSPs = NULL;
+-	zoeVec        qvec;
+-	zoeVec        svec;
++	/* zoeVec        qvec; */
++	/* zoeVec        svec; */
+ 
+ 	for (i = 0; i < HSPs->size; i++) {
+ 		zoeWriteHSP(stdout, HSPs->elem[i]);
+ 	}
+ 	
+-	qvec = zoeGroupHSPs(HSPs, 'q');
+-	svec = zoeGroupHSPs(HSPs, 's');
++	/* qvec = */ zoeGroupHSPs(HSPs, 'q');
++	/* svec = */ zoeGroupHSPs(HSPs, 's');
+ 	
+ 	return bestHSPs;
+ }

@@ -1,0 +1,9 @@
+unused-but-set-variable.patch
+hardening.patch
+build-with-gcc-6.patch
+use-CC.patch
+replace_itoa_with_broken_indentation.patch
+fix_missing_braces_in_if_statements.patch
+gcc-8.patch
+spelling.patch
+gcc-10-multiple_definitions.patch

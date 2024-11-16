@@ -1,0 +1,29 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Wed, 24 Aug 2016 10:43:36 +0200
+Bug-Debian: https://bugs.debian.org/835283
+Forwarded: https://github.com/KorfLab/SNAP/issues/3
+Description: add missing braces
+
+--- a/exonpairs.c
++++ b/exonpairs.c
+@@ -83,14 +83,14 @@ static zoeFeatureVec get_exons (const zo
+ 				switch (exon->label) {
+ 					case Esngl: skip = 1; break;
+ 					case Einit:
+-						if (exon->score < MIN_EINIT_SCORE)  skip = 1; break;
+-						if (length      < MIN_EINIT_LENGTH) skip = 1; break;
++						if (exon->score < MIN_EINIT_SCORE)  { skip = 1; break; }
++						if (length      < MIN_EINIT_LENGTH) { skip = 1; break; }
+ 					case Eterm:
+-						if (exon->score < MIN_ETERM_SCORE)  skip = 1; break;
+-						if (length      < MIN_ETERM_LENGTH) skip = 1; break;
++						if (exon->score < MIN_ETERM_SCORE)  { skip = 1; break; }
++						if (length      < MIN_ETERM_LENGTH) { skip = 1; break; }
+ 					case Exon:
+-						if (exon->score < MIN_EXON_SCORE)   skip = 1; break;
+-						if (length      < MIN_EXON_LENGTH)  skip = 1; break;
++						if (exon->score < MIN_EXON_SCORE)   { skip = 1; break; }
++						if (length      < MIN_EXON_LENGTH)  { skip = 1; break; }
+ 					default: zoeExit("no, not possible");
+ 				}
+ 				if (skip) continue;

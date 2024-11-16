@@ -1,0 +1,67 @@
+Author: Sascha Steinbiss <satta@tetrinetsucht.de>,
+        Helmut Grohne <helmut@subdivi.de>
+Last-Update: Fri, 8 Dec 2017 22:32:22 +0100
+Bug-Debian: https://bugs.debian.org/883891
+Forwarded: https://github.com/KorfLab/SNAP/issues/3
+Description: Do not force gcc explicitly but use $(CC) instead
+
+--- a/Zoe/Makefile
++++ b/Zoe/Makefile
+@@ -76,7 +76,7 @@ clean:
+ 	rm -f *.o $(APP) $(APP2) $(APP3) $(APP4) $(APP5)
+ 
+ depend: $(OBJECTS:.o=.c)
+-	gcc -MM $^ > $@
++	$(CC) -MM $^ > $@
+ 
+ tar:
+ 	rm -rf /tmp/$(APP)
+@@ -92,14 +92,14 @@ tar:
+ #################
+ 
+ gcc:
+-	make $(APP)  CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP) CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+ 
+ all:
+-	make $(APP)  CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+-	make $(APP2) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+-	make $(APP3) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+-	make $(APP4) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+-	make $(APP5) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP)  CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP2) CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP3) CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP4) CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP5) CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+ 
+ 
+ ###################
+--- a/Makefile
++++ b/Makefile
+@@ -79,7 +79,7 @@ clean:
+ 	cd Zoe; make clean
+ 
+ depend: $(OBJECTS:.o=.c)
+-	gcc $(INC) -MM $^ > $@
++	$(CC) $(INC) -MM $^ > $@
+ 
+ tar:
+ 	rm -rf /tmp/$(APP)
+@@ -96,11 +96,11 @@ tar:
+ 
+ gcc:
+ 	cd Zoe; make CFLAGS="$(CFLAGS)";
+-	make $(APP)  CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+-	make $(APP2) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+-	make $(APP3) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+-	make $(APP4) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+-	make $(APP5) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP) CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP2) CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP3) CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP4) CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP5) CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+ 
+ 
+ ###################

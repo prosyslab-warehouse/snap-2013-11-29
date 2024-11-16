@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+pkg=snap
+if [ "$AUTOPKGTEST_TMP" = "" ] ; then
+  AUTOPKGTEST_TMP=`mktemp -d /tmp/${pkg}-test.XXXXXX`
+  trap "rm -rf $AUTOPKGTEST_TMP" 0 INT QUIT ABRT PIPE TERM
+fi
+cd $AUTOPKGTEST_TMP
+snap-hmm /usr/share/snap/HMM/thale /usr/share/doc/${pkg}/examples/DNA/thale.dna.gz
+snap-hmm /usr/share/snap/HMM/worm  /usr/share/doc/${pkg}/examples/DNA/worm.dna.gz
+

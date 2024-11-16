@@ -1,0 +1,32 @@
+.TH FATHOM "1" "October 2013" "fathom 2010-07-28" "User Commands"
+.SH NAME
+fathom \- sequence and annotation tool
+.SH SYNOPSIS
+.B fathom
+<\fBann\fR> <\fBdna\fR> <\fBcommands\fR>
+.SH OPTIONS
+.TP
+\fB\-help\fR
+report useful information
+.HP
+\fB\-validate\fR [\-quiet]
+.HP
+\fB\-gene\-stats\fR [\-errors\-ok \fB\-nucleotide\fR \fB\-dinucleotide]\fR
+.HP
+\fB\-categorize\fR <int>
+.HP
+\fB\-export\fR <int> [\-plus \fB\-errors\-ok]\fR
+.HP
+\fB\-extract\fR <feature> \fB\-length\fR <int> \fB\-offset\fR <int>
+.HP
+\fB\-exon\-intron\fR
+.HP
+\fB\-split\fR <\-number <int> | \fB\-training\fR <float> | \fB\-GC\fR <float> | \fB\-repeat\fR <float>>
+.HP
+\fB\-ace\-format\fR <\-gene\-method <string> [\-dna \fB\-extra\fR <string>]>
+.HP
+\fB\-compare\-genes\fR <predictions> [\-details]
+.HP
+\fB\-score\-genes\fR <hmm> [\-errors\-ok]
+.HP
+\fB\-filter\-genes\fR <hmm> \fB\-min\-score\fR <float> \fB\-min\-length\fR <int>

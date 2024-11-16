@@ -1,0 +1,42 @@
+.TH EXONPAIRS "1" "October 2013" "exonpairs 2010-07-28" "User Commands"
+.SH NAME
+exonpairs \- SNAP module exonpairs
+.SH SYNOPSIS
+.B exonpairs
+[\fIoptions\fR] <\fBHMM file\fR> <\fBFASTA file\fR> [\fIoptions\fR]
+.SH OPTIONS
+.TP
+\fB\-min\-intron\fR <int>
+minimum Intron length [30]
+.TP
+\fB\-max\-intron\fR <int>
+maximum Intron length [10000]
+.TP
+\fB\-einit\-length\fR <int>
+minimum Einit length in bp [10]
+.TP
+\fB\-eterm\-length\fR <int>
+minimum Eterm length in bp [10]
+.TP
+\fB\-exon\-length\fR <int>
+minimum Exon length in bp [30]
+.HP
+\fB\-intron\-score\fR <float> minimum Intron score in bits [\-5]
+.TP
+\fB\-einit\-score\fR <float>
+minimum Einit score in bits [\-5]
+.TP
+\fB\-eterm\-score\fR <float>
+minimum Eterm score in bits [\-5]
+.TP
+\fB\-exon\-score\fR <float>
+minimum Exon score in bits [\-5]
+.TP
+\fB\-pair\-score\fR <float>
+minimum pair score (exon\-intron\-exon) [10]
+.TP
+\fB\-flank\-length\fR <int>
+length of flanking sequence per exon [20]
+.TP
+\fB\-lcmask\fR
+treat lowercase as N

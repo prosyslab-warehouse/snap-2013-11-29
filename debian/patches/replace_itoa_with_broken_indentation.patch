@@ -1,0 +1,38 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Wed, 24 Aug 2016 10:43:36 +0200
+Forwarded: https://github.com/KorfLab/SNAP/issues/3
+Description: itoa implementation had broken indentation - use
+ sprintf instead
+
+--- a/Zoe/zoeTools.c
++++ b/Zoe/zoeTools.c
+@@ -131,28 +131,8 @@ void zoeParseOptions (int * argc, char *
+  Typedef I/O
+ \******************************************************************************/
+ 
+-static void reverse_string (char * s) {
+-	int c, i, j;
+-
+-	for (i = 0, j = strlen(s) -1; i < j; i++, j--) {
+-		c = s[i];
+-		s[i] = s[j];
+-		s[j] = c;
+-	}
+-}
+-
+ static void itoa (int n, char * s) {
+-	int i, sign;
+-		
+-	if ((sign = n) < 0) n = -n;
+-	i = 0;
+-	do {
+-		s[i++] = n % 10 + '0';
+-	} while ((n /= 10) > 0);
+-	if (sign < 0)
+-		s[i++] = '-';
+-		s[i] = '\0';
+-		reverse_string(s);
++	sprintf(s, "%d", n);
+ }
+ 
+ /* coor_t */

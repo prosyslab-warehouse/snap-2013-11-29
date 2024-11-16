@@ -1,0 +1,16 @@
+exonpairs		usr/bin
+hmm-info		usr/bin
+forge			usr/bin
+fathom			usr/bin
+snap			usr/lib/snap
+debian/bin/*		usr/bin
+cds-trainer.pl		usr/bin
+hmm-assembler.pl	usr/bin
+noncoding-trainer.pl	usr/bin
+patch-hmm.pl		usr/bin
+zff2gff3.pl		usr/bin
+HMM			usr/share/snap
+Zoe/zoe-loop		usr/bin
+Zoe/blosum62		usr/share/snap/Zoe
+# dh_installmans is to intelligent and moves these manpages to /usr/share/man/pl/man1 which is prevented by this trick
+debian/mans.pl/*	usr/share/man/man1

@@ -1,0 +1,22 @@
+Reference:
+  Author: Ian Korf
+  Title: Gene finding in novel Genomes
+  Journal: BMC Bioinformatics
+  Year: 2004
+  Volume: 5
+  Pages: 59
+  PMID: 15144565
+  DOI: 10.1186/1471-2105-5-59
+  URL: http://www.biomedcentral.com/1471-2105/5/59/abstract
+  eprint: http://www.biomedcentral.com/content/pdf/1471-2105-5-59.pdf
+Registry:
+  - Name: OMICtools
+    Entry: OMICS_07771
+  - Name: bio.tools
+    Entry: SNAP
+  - Name: SciCrunch
+    Entry: NA
+Bug-Database: https://github.com/KorfLab/SNAP/issues
+Bug-Submit: https://github.com/KorfLab/SNAP/issues/new
+Repository: https://github.com/KorfLab/SNAP.git
+Repository-Browse: https://github.com/KorfLab/SNAP

@@ -1,0 +1,130 @@
+Author: Andreas Tille <tille@debian.org>
+LastChanged: Fri, 25 Oct 2013 16:39:26 +0200
+Forwarded: https://github.com/KorfLab/SNAP/issues/3
+Description: Propagate Hardening options
+
+--- a/Makefile
++++ b/Makefile
+@@ -2,6 +2,8 @@
+ # Makefile for SNAP  #
+ ######################
+ 
++export CFLAGS LDFLAGS
++
+ LIB = -lm
+ INC = -IZoe
+ 
+@@ -58,19 +60,19 @@
+ 	make gcc
+ 
+ $(APP): $(OBJ) $(OBJECTS)
+-	$(CC) -o $(APP) $(CFLAGS) $(OBJ) $(OBJECTS) $(LIB)
++	$(CC) -o $(APP) $(CFLAGS) $(CPPFLAGS) $(OBJ) $(OBJECTS) $(LIB) $(LDFLAGS)
+ 
+ $(APP2): $(OBJ2) $(OBJECTS)
+-	$(CC) -o $(APP2) $(CFLAGS) $(OBJ2) $(OBJECTS) $(LIB)
++	$(CC) -o $(APP2) $(CFLAGS) $(CPPFLAGS) $(OBJ2) $(OBJECTS) $(LIB) $(LDFLAGS)
+ 
+ $(APP3): $(OBJ3) $(OBJECTS)
+-	$(CC) -o $(APP3) $(CFLAGS) $(OBJ3) $(OBJECTS) $(LIB)
++	$(CC) -o $(APP3) $(CFLAGS) $(CPPFLAGS) $(OBJ3) $(OBJECTS) $(LIB) $(LDFLAGS)
+ 
+ $(APP4): $(OBJ4) $(OBJECTS)
+-	$(CC) -o $(APP4) $(CFLAGS) $(OBJ4) $(OBJECTS) $(LIB)
++	$(CC) -o $(APP4) $(CFLAGS) $(CPPFLAGS) $(OBJ4) $(OBJECTS) $(LIB) $(LDFLAGS)
+ 
+ $(APP5): $(OBJ5) $(OBJECTS)
+-	$(CC) -o $(APP5) $(CFLAGS) $(OBJ5) $(OBJECTS) $(LIB)
++	$(CC) -o $(APP5) $(CFLAGS) $(CPPFLAGS) $(OBJ5) $(OBJECTS) $(LIB) $(LDFLAGS)
+ 
+ clean:
+ 	rm -f *.o $(APP) $(APP2) $(APP3) $(APP4) $(APP5)
+@@ -93,12 +95,12 @@
+ #################
+ 
+ gcc:
+-	cd Zoe; make;
+-	make $(APP)  CC="gcc" CFLAGS="-O2 -Wall -Werror"
+-	make $(APP2) CC="gcc" CFLAGS="-O2 -Wall -Werror"
+-	make $(APP3) CC="gcc" CFLAGS="-O2 -Wall -Werror"
+-	make $(APP4) CC="gcc" CFLAGS="-O2 -Wall -Werror"
+-	make $(APP5) CC="gcc" CFLAGS="-O2 -Wall -Werror"
++	cd Zoe; make CFLAGS="$(CFLAGS)";
++	make $(APP)  CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP2) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP3) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP4) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP5) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+ 
+ 
+ ###################
+@@ -106,7 +108,7 @@
+ ###################
+ 
+ %.o: %.c
+-	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(INC) -c -o $@ $<
+ 
+ ################
+ # Dependancies #
+--- a/Zoe/Makefile
++++ b/Zoe/Makefile
+@@ -55,22 +55,22 @@
+ ###########
+ 
+ default:
+-	make gcc
++	make gcc CFLAGS="$(CFLAGS)"
+ 
+ $(APP): $(OBJ) $(OBJECTS)
+-	$(CC) -o $(APP) $(CFLAGS) $(OBJ) $(OBJECTS) $(LIB)
++	$(CC) -o $(APP) $(CFLAGS) $(CPPFLAGS) $(OBJ) $(OBJECTS) $(LIB) $(LDFLAGS)
+ 
+ $(APP2): $(OBJ2) $(OBJECTS)
+-	$(CC) -o $(APP2) $(CFLAGS) $(OBJ2) $(OBJECTS) $(LIB)
++	$(CC) -o $(APP2) $(CFLAGS) $(CPPFLAGS) $(OBJ2) $(OBJECTS) $(LIB) $(LDFLAGS)
+ 
+ $(APP3): $(OBJ3) $(OBJECTS)
+-	$(CC) -o $(APP3) $(CFLAGS) $(OBJ3) $(OBJECTS) $(LIB)
++	$(CC) -o $(APP3) $(CFLAGS) $(CPPFLAGS) $(OBJ3) $(OBJECTS) $(LIB) $(LDFLAGS)
+ 
+ $(APP4): $(OBJ4) $(OBJECTS)
+-	$(CC) -o $(APP4) $(CFLAGS) $(OBJ4) $(OBJECTS) $(LIB)
++	$(CC) -o $(APP4) $(CFLAGS) $(CPPFLAGS) $(OBJ4) $(OBJECTS) $(LIB) $(LDFLAGS)
+ 
+ $(APP5): $(OBJ5) $(OBJECTS)
+-	$(CC) -o $(APP5) $(CFLAGS) $(OBJ5) $(OBJECTS) $(LIB)
++	$(CC) -o $(APP5) $(CFLAGS) $(CPPFLAGS) $(OBJ5) $(OBJECTS) $(LIB) $(LDFLAGS)
+ 
+ clean:
+ 	rm -f *.o $(APP) $(APP2) $(APP3) $(APP4) $(APP5)
+@@ -92,14 +92,14 @@
+ #################
+ 
+ gcc:
+-	make $(APP)  CC="gcc" CFLAGS="-O2 -Wall -Werror"
++	make $(APP)  CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+ 
+ all:
+-	make $(APP)  CC="gcc" CFLAGS="-O2 -Wall -Werror"
+-	make $(APP2) CC="gcc" CFLAGS="-O2 -Wall -Werror"
+-	make $(APP3) CC="gcc" CFLAGS="-O2 -Wall -Werror"
+-	make $(APP4) CC="gcc" CFLAGS="-O2 -Wall -Werror"
+-	make $(APP5) CC="gcc" CFLAGS="-O2 -Wall -Werror"
++	make $(APP)  CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP2) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP3) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP4) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
++	make $(APP5) CC="gcc" CFLAGS="-O2 -Wall -Werror $(CFLAGS)"
+ 
+ 
+ ###################
+@@ -107,7 +107,7 @@
+ ###################
+ 
+ %.o: %.c
+-	$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+ 
+ ################
+ # Dependancies #

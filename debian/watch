@@ -1,0 +1,2 @@
+version=4
+http://korflab.ucdavis.edu/software.html .*/Software/snap-([0-9-]+)\.tar\.gz

@@ -1,0 +1,39 @@
+Description: Fix spelling
+Author: Andreas Tille <tille@debian.org>
+Forwarded: https://github.com/KorfLab/SNAP/issues/3
+Last-Update: Mon, 07 May 2018 23:38:54 +0200
+
+--- a/Zoe/zoePhasePref.c
++++ b/Zoe/zoePhasePref.c
+@@ -80,7 +80,7 @@ score_t zoeScorePhase (zoePhasePref pp,
+ 				case Int0:                           return pp->score[Ei_I0];
+ 				case Int1: case Int1T:               return pp->score[Ei_I1];
+ 				case Int2: case Int2TA: case Int2TG: return pp->score[Ei_I2];
+-				default: zoeExit("zoeScorePhase does not allow to %d", to);
++				default: zoeExit("zoeScorePhase does not allow one to %d", to);
+ 			}
+ 		case Exon:
+ 			switch (inc5) {
+@@ -111,19 +111,19 @@ score_t zoeScorePhase (zoePhasePref pp,
+ 			switch (to) {
+ 				case Exon:  return pp->score[I0_E0];
+ 				case Eterm: return pp->score[I0_Et];
+-				default: zoeExit("zoeScorePhase does not allow to %d", to);
++				default: zoeExit("zoeScorePhase does not allow one to %d", to);
+ 			}
+ 		case Int1: case Int1T:
+ 			switch (to) {
+ 				case Exon:  return pp->score[I1_E1];
+ 				case Eterm: return pp->score[I1_Et];
+-				default: zoeExit("zoeScorePhase does not allow to %d", to);
++				default: zoeExit("zoeScorePhase does not allow one to %d", to);
+ 			}
+ 		case Int2: case Int2TA: case Int2TG:
+ 			switch (to) {
+ 				case Exon:  return pp->score[I2_E2];
+ 				case Eterm: return pp->score[I2_Et];
+-				default: zoeExit("zoeScorePhase does not allow to %d", to);
++				default: zoeExit("zoeScorePhase does not allow one to %d", to);
+ 			}
+ 		default: return 0;
+ 	}

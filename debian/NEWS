@@ -1,0 +1,26 @@
+snap (2013-11-29-5) unstable; urgency=medium
+
+  Due to a name conflict with /usr/bin/snap from snapd tool to interact with
+  Ubuntu Core Snappy the main executable needs to be renamed.  This snap
+  package now provides the binary
+  
+    /usr/bin/snap-hmm
+
+  To remain compatible with local user scripts using the name snap the old
+  name of the executable is provided under the PATH
+  
+    /usr/lib/debian-med/bin/snap
+
+  So if you want to use snap with its original name just do the following:
+  Set the PATH variable like
+
+    export PATH=/usr/lib/debian-med/bin:$PATH
+
+  The PATH can be set very easily by making use of the feature of the
+  med-config package of the Debian Med Blend.  Once med-config is
+  installed for Bash users who create a file ${HOME}/.blends containing
+  the string "debian-med" the PATH is automatically extended and thus
+  users who consider themselves Debian Med users have access to the
+  originally named executables.
+
+ -- Andreas Tille <tille@debian.org>  Fri, 23 Dec 2016 12:27:28 +0100
